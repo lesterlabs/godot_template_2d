@@ -21,8 +21,9 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func take_damage(hurt_box: HurtBox) -> void:
+	print("Player took ", hurt_box.damage, " damage! HP: ", hp)  # Log the damage
 	hp -= int(hurt_box.damage)
-	player_damaged.emit(hp)
+	player_damaged.emit()
 	
 	if hp <= 0:
 		die()

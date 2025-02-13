@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://s52hf5463kje"]
+[gd_scene load_steps=34 format=3 uid="uid://s52hf5463kje"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_nlaug"]
 [ext_resource type="Script" path="res://Player/Scripts/player_state_machine.gd" id="2_qxdo7"]
@@ -431,9 +431,13 @@ _data = {
 "walk_up": SubResource("Animation_070lu")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a4d6p"]
+radius = 13.0
+height = 46.0
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(1, 0)
-collision_mask = 16
+collision_mask = 273
 motion_mode = 1
 script = ExtResource("1_nlaug")
 
@@ -482,7 +486,8 @@ texture = ExtResource("8_3jqqa")
 [node name="HurtBox" parent="Sprite2D" instance=ExtResource("9_7l1yh")]
 unique_name_in_owner = true
 position = Vector2(1, 16)
-collision_mask = 272
+collision_layer = 1
+collision_mask = 16
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
@@ -511,4 +516,5 @@ unique_name_in_owner = true
 position = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_2k0vb")
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_a4d6p")

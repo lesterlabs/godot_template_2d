@@ -19,10 +19,12 @@ func init() -> void:
 func enter() -> void:
 	enemy.velocity = enemy.player.cardinal_direction * knock_back_speed
 	enemy.update_animation(anim_name)
+	enemy.hurt_box.monitoring = false
 	animation_player.animation_finished.connect(func(_anim_name: String) -> void:
 		state_machine.change_state(next_state))
 
 func exit() -> void:
+	enemy.hurt_box.monitoring = true
 	for connection in animation_player.animation_finished.get_connections():
 		animation_player.animation_finished.disconnect(connection["callable"])
 
